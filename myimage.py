@@ -36,7 +36,7 @@ class MyImage:
 
 
     def load_from_file(self, fp):
-        self.im = Image.open(fp)
+        self.image = Image.open(fp)
 
     def get_rgb(self, apoint):
         return self.rgb_im.getpixel(apoint)
