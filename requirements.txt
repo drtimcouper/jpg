@@ -1,3 +1,6 @@
+# to manage jpgs you;re gonna need:
 # sudo apt-get install libjpeg-dev
 
-pillow
+# things that conda can't pip install
+
+behave
