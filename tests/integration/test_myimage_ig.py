@@ -2,7 +2,7 @@ import os
 
 from nose.tools import assert_true, assert_false
 
-from jpg.myimage import MyImage, are_images_equal
+from jpg.myimage import MyImage, are_images_equal_for_pixels
 
 this_dir =  os.path.abspath(os.path.dirname(__file__))
 DATA_DIR = os.path.join(this_dir, 'data')
@@ -22,7 +22,7 @@ def test_equal_same():
     im.load_from_file(IMAGE_FILE)
     im2 = MyImage()
     im2.load_from_file(IMAGE_FILE)
-    assert_true(are_images_equal(im,im2, PIXELS))
+    assert_true(are_images_equal_for_pixels(im,im2, PIXELS))
 
 
 def test_equal_different():
@@ -30,4 +30,4 @@ def test_equal_different():
     im.load_from_file(IMAGE_FILE)
     im2 = MyImage()
     im2.load_from_file(IMAGE_FILE2)
-    assert_false(are_images_equal(im,im2, PIXELS))
+    assert_false(are_images_equal_for_pixels(im,im2, PIXELS))

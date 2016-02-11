@@ -1,6 +1,6 @@
 from PIL import Image
 
-def are_images_equal(one, other, pixels):
+def are_images_equal_for_pixels(one, other, pixels):
     for pixel in pixels:
         if one.get_rgb(pixel) != other.get_rgb(pixel):
             return False
