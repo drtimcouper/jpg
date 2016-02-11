@@ -7,11 +7,36 @@ def are_images_equal(one, other, pixels):
     else:
         return True
 
-class MyImage:
 
-    def __init__(self, fp):
+class NoImageLoadedError(Exception):
+    pass
+
+
+class MyImage:
+    _image = None
+    _rgb_im = None
+
+    @property
+    def rgb_im(self):
+        if self._rgb_im is None:
+            if self.image is None:
+                raise NoImageLoadedError
+            self._rgb_im = self.image.convert('RGB')
+        return self._rgb_im
+
+    @property
+    def image(self):
+        return self._image
+
+    @ image.setter
+    def image(self, value):
+        self._image = value
+       # unset what was in _rgb_im
+        self._rgb_im = None
+
+
+    def load_from_file(self, fp):
         self.im = Image.open(fp)
-        self.rgb_im = self.im.convert('RGB')
 
     def get_rgb(self, apoint):
         return self.rgb_im.getpixel(apoint)
